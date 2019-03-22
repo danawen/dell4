@@ -18,6 +18,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import springapp.domain.Appointment;
+import springapp.domain.Client;
 
 /**
  * This is the appointments dao that is responsible for managing the appointments info in the databsae.
@@ -31,7 +32,7 @@ public class AppointmentDao {
 
 		@Override
 		public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new Appointment(rs.getTime("time"), rs.getDate("date"), rs.getInt("client"), rs.getInt("pet"));
+			return new Appointment(rs.getInt("id"), rs.getInt("client"),rs.getTime("time"), rs.getDate("date"),rs.getInt("pet"));
 		}
 	};
 	
@@ -69,20 +70,22 @@ public class AppointmentDao {
 				
 				@Override
 				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-					PreparedStatement statement = con.prepareStatement("INSERT INTO clients(name, phone_number, address) VALUES (?, ?, ?)");
-					statement.setString(1, client.getName());
-					statement.setString(2, client.getPhoneNumber());
-					statement.setString(3, client.getAddress());
+					PreparedStatement statement = con.prepareStatement("INSERT INTO appointments (time, date, client, pet) VALUES (?, ?, ?)");
+					statement.setTime(1, appointment.getTime());
+					statement.setDate(2, appointment.getDate());
+					statement.setInt(3, appointment.getClient());
+					statement.setInt(3, appointment.getPet());
+					
+					
 					return statement;
-
-				}
+		}
 			}, holder);
 			
 			id = holder.getKey().intValue();
 			
 		} else {
-			jdbcTemplate.update("UPDATE clients SET name = ?, phone_number = ? , address = ? WHERE id = ?",
-					new Object[] {client.getName(), client.getPhoneNumber(), client.getAddress(), id});
+			jdbcTemplate.update("UPDATE clients SET time = ?, date = ? , client = ? pet = ? WHERE id = ?",
+					new Object[] {appointment.getTime(), appointment.getDate(), appointment.getClient(), appointment.getPet(), id});
 		}
 		
 		return get(id);
@@ -91,12 +94,9 @@ public class AppointmentDao {
 	
 	public void delete(int id) {
 		
-		jdbcTemplate.update("DELETE FROM pets WHERE client_id = ?",
+		jdbcTemplate.update("DELETE FROM appointments WHERE id = ?",
 				new Object[] {id});
-		
-		
-		jdbcTemplate.update("DELETE FROM clients WHERE id = ?",
-				new Object[] {id});
-		
+	
+
 	}
 }
