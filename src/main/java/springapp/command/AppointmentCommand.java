@@ -8,23 +8,27 @@ import java.sql.Time;
 
 public class AppointmentCommand {
 	
-	
+	private Integer id;
 	private Integer client;
 	private Integer pet;
 	private Date date;
 	private Time time;
 	
 	
-	public AppointmentCommand(Appointment appointment, Client client, Pet pet) {
+	public AppointmentCommand(Appointment appointment) {
 		if(appointment != null) {
-			this.client = client.getId();
-			this.pet = pet.getId();
+			this.id = appointment.getId();
 			this.date = appointment.getDate();
 			this.time = appointment.getTime();
+			this.client=appointment.getClient();
+			this.pet=appointment.getPet();
 		}
 	}
 
-
+	public Integer getId() {
+		return id;
+	}
+	
 	public Integer getClient() {
 		return client;
 	}

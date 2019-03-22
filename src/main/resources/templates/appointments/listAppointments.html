@@ -8,6 +8,9 @@
 		</header>
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
+				<div class="pad right">
+					<a class="pure-button"  data-th-href="@{'/appointments/new'}">Add appointment</a>
+				</div>
 				<div class="pad">
 				    <div data-th-if="${deleted}" class="message-box-info">
 						Deleted successfully
@@ -20,6 +23,7 @@
 								<th>Time</th>
 								<th>Date</th>
 								<th>Pet</th>
+
 							</tr>
 						</thead>
 						<tbody>	

@@ -13,7 +13,7 @@ public class Appointment {
 	private final Integer pet;
 	
 
-	public Appointment(Integer id, Integer client, Time time, Date date, Integer pet) {
+	public Appointment(Integer id, Date date, Time time, Integer client,   Integer pet) {
 		this.id = id;
 		this.client = client;
 		this.time = time;
