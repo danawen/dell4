@@ -32,7 +32,7 @@ public class AppointmentDao {
 
 		@Override
 		public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new Appointment(rs.getInt("id"), rs.getInt("client"),rs.getTime("time"), rs.getDate("date"),rs.getInt("pet"));
+			return new Appointment(rs.getInt("id"), rs.getDate("date"),rs.getTime("time"), rs.getInt("client"),rs.getInt("pet"));
 		}
 	};
 	
