@@ -70,6 +70,9 @@ public class AppointmentController {
         return "appointment/listAppointments";
     }
 
+	
+
+
     /**
      * Get pet information and draw an edit page for single pet.
      * Also used to draw a new pet page
@@ -78,7 +81,7 @@ public class AppointmentController {
      * @param model the model that will be used when merging with the view template
      * @return the edit pet view template
      */
-	@PreAuthorize("hasAuthority('GET_APPOINTMENT')")
+	/*	@PreAuthorize("hasAuthority('GET_APPOINTMENT')")
 	@GetMapping("/{id}")
 	public String getAppointment(@PathVariable("id") String id,
 						 Model model,
@@ -132,13 +135,13 @@ public class AppointmentController {
 	}
 
 
-    /**
+    *//**
      * Save the pet info, or create a new pet based on the command
      * @param command the command to get the pet info from
      * @param redirectAttributes used to pass attributes to the get page after saving a pet
      * @param fromClientPage a flag so we know if this originated from the client page, or the pet list page
      * @return the view template to use once the save is successful
-     */
+     *//*
 	@PreAuthorize("hasAuthority('SAVE_Appointment')")
 	@PostMapping
 	 public String saveAppointmnet(AppointmentCommand command, RedirectAttributes redirectAttributes, boolean fromClientPage) {
@@ -155,13 +158,13 @@ public class AppointmentController {
 
     }
 
-    /**
+    *//**
      * Delete a pet and redirect to either the pet listing page, or the client edit page
      * @param id the if of the pet
      * @param clientId an optional client id of the pet
      * @param redirectAttributes additional attributes to pass along to the page we redirect to
      * @return the path of the page we redirect to once the delete is done
-     */
+     *//*
 	@PreAuthorize("hasAuthority('DELETE_PET')")
 	@GetMapping("/{id}/delete")
 	public String deleteAppointment(@PathVariable("id") String id,
@@ -186,4 +189,5 @@ public class AppointmentController {
 
 	}
 
+*/
 }
