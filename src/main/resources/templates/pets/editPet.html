@@ -9,7 +9,7 @@
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
-				    <a class="pure-button"   data-th-href="@{/appointments/{c}(c=${id})}">Add Appointment</a>
+				    <a class="pure-button"   data-th-href="@{/appointments/new?petId={c}(c=${id})}">Add Appointment</a>
 					<button type="submit" form="theForm" class="pure-button"  value="Save">Save</button>
 					<a class="pure-button"  data-th-if="${fromClientPage}" data-th-href="@{/clients/{c}(c=${command.client.id})}">Cancel</a>
 					<a class="pure-button"  data-th-if="${!fromClientPage}" data-th-href="@{/pets}">Cancel</a>
