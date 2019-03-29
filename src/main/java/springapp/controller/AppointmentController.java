@@ -85,7 +85,7 @@ public class AppointmentController {
 	@GetMapping("/{id}")
 	public String getAppointment(@PathVariable("id") String id,
 						 Model model,
-						 @RequestParam(name="petId", required=true) Integer petId,
+						 @RequestParam(name="petId", required = true) Integer petId,
 //****************!!!!!!!!!!!!!MIGHT NEED TO CHANGE CLIENT ID TO PET ID DEPENDING ON HOW WE MAP APPOINTMENTS******!!!!!!!!!!!!!!!!!!!! 
 						 @RequestParam(name="saved", required = false) boolean saved) {
 
