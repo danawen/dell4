@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.sql.Date;
+import java.sql.Time;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +34,8 @@ public class AppointmentDao {
 
 		@Override
 		public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new Appointment(rs.getInt("id"), rs.getDate("date"),rs.getTime("time"), rs.getInt("client"),rs.getInt("pet"));
+			return new Appointment(rs.getInt("id"), Date.valueOf(rs.getString("date")),Time.valueOf(rs.getString("time")), rs.getInt("client"),rs.getInt("pet"));
+			//return new Appointment(rs.getInt("id"), Date.valueOf("2019-04-05"),Time.valueOf("12:00:00"), rs.getInt("client"),rs.getInt("pet"));
 		}
 	};
 	
@@ -40,14 +43,14 @@ public class AppointmentDao {
     JdbcTemplate jdbcTemplate;
     	
 	public List<Appointment> list(){
-		List<Appointment> queryResult = jdbcTemplate.query("SELECT time, date, client, pet FROM appointments",
+		List<Appointment> queryResult = jdbcTemplate.query("SELECT id, time, date, client, pet FROM appointments",
 				simpleMapper);
 		
 		return queryResult;
 	}
 	
 	public Appointment get(int id) {
-		List<Appointment> queryResult = jdbcTemplate.query("SELECT time, date, client,pet FROM appointments WHERE id = ? LIMIT 1", 
+		List<Appointment> queryResult = jdbcTemplate.query("SELECT id, time, date, client,pet FROM appointments WHERE id = ? LIMIT 1", 
 				new Object[] {id},
 				simpleMapper);
 		
