@@ -30,6 +30,12 @@ public class Client {
 	public Integer getId() {
 		return id;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", address=" + address + "]";
+	}
 	
 	
 }

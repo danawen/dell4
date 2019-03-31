@@ -35,6 +35,12 @@ public class Pet {
 		return clientId;
 	}
 
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", name=" + name + ", gender=" + gender + ", altered=" + altered + ", clientId="
+				+ clientId + "]";
+	}
+
 	
 }
 

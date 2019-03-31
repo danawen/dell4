@@ -1,6 +1,7 @@
 package springapp.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -58,15 +59,31 @@ public class AppointmentController {
      * @param model the model to populate, and merge in with the view template
      * @return the view template for listing pets
      */
-	@PreAuthorize("hasAuthority('LIST_PETS')")
+	@PreAuthorize("hasAuthority('LIST_APPOINTMENTS')")
 	@GetMapping
 	 public String listAppointment(Model model) {
 	    // get the list of pets from the service
         List<Appointment> appointments = appointmentService.getAppointment();
-
+        
+        List<Pet> pets= new ArrayList<Pet>();
+        List<Client> clients= new ArrayList<Client>();
+        
+        for (Appointment ap: appointments) {
+        	if (!pets.contains(petService.getPet(ap.getPet()))) 
+        		pets.add(petService.getPet(ap.getPet()));
+        	if (!clients.contains(clientService.getClient(ap.getClient())))
+        		clients.add(clientService.getClient(ap.getClient()));
+        }
+        
         // we add the pets to the model
         // Note we are not adding the PetCommand instances, but Pet instances
 		model.addAttribute("appointments", appointments);
+		model.addAttribute("pets", pets);
+		model.addAttribute("clients", clients);
+		
+		logger.info(appointments.toString());
+		if (!pets.isEmpty())logger.info(pets.get(0).toString());
+		if (!clients.isEmpty())logger.info(clients.get(0).toString());
         return "appointment/listAppointments";
     }
 
