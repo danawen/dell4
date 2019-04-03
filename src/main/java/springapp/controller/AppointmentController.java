@@ -102,7 +102,7 @@ public class AppointmentController {
 	@GetMapping("/{id}")
 	public String getAppointment(@PathVariable("id") String id,
 						 Model model,
-						 @RequestParam(name="petId", required = true) Integer petId,
+						 @RequestParam(name="petId", required = false) Integer petId,
 //****************!!!!!!!!!!!!!MIGHT NEED TO CHANGE CLIENT ID TO PET ID DEPENDING ON HOW WE MAP APPOINTMENTS******!!!!!!!!!!!!!!!!!!!! 
 						 @RequestParam(name="saved", required = false) boolean saved) {
 
@@ -127,6 +127,8 @@ public class AppointmentController {
             // if the id is 'new' then we create a appt command that only has the client id filled in
             model.addAttribute("command",new AppointmentCommand(null));
 			//AppointmentCommand = new AppointmentCommand();
+            model.addAttribute("pet", petService.getPet(petId));
+            model.addAttribute("client", clientService.getClient(petService.getPet(petId).getClientId()));
 			
 		} else {
             // else we should get the pet command that is a copy of the pet
@@ -169,7 +171,7 @@ public class AppointmentController {
 	@PreAuthorize("hasAuthority('SAVE_Appointment')")
 	@PostMapping
 	 public String saveAppointmnet(AppointmentCommand command, RedirectAttributes redirectAttributes, boolean fromPetPage) {
-
+		logger.info("Entering saveAppointment");
         // we pass in the appt command to the service to update or create a new appt
         Appointment appointment = appointmentService.saveAppointment(command);
 
@@ -178,6 +180,7 @@ public class AppointmentController {
         if(fromPetPage) {
             redirectAttributes.addAttribute("petId", appointment.getPet());
         }
+        logger.info("leaving saveAppointmnet");
         return "redirect:/appointments/"+appointment.getId();
 
     }
