@@ -74,8 +74,8 @@ public class AppointmentDao {
 				@Override
 				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 					PreparedStatement statement = con.prepareStatement("INSERT INTO appointments (time, date, client, pet) VALUES (?, ?, ?)");
-					statement.setTime(1, appointment.getTime());
-					statement.setDate(2, appointment.getDate());
+					statement.setString(1, appointment.getTime().toString());
+					statement.setString(2, appointment.getDate().toString());
 					statement.setInt(3, appointment.getClient());
 					statement.setInt(3, appointment.getPet());
 					

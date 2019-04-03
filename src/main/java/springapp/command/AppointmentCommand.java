@@ -12,6 +12,7 @@ public class AppointmentCommand {
 	private Integer client;
 	private Integer pet;
 	private Date date;
+	
 	private Time time;
 	
 	
