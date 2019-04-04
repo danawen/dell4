@@ -19,6 +19,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import springapp.controller.AppointmentController;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
 
@@ -29,6 +30,8 @@ import springapp.domain.Client;
 @Repository
 @Scope("singleton")
 public class AppointmentDao {
+	
+	private Logger logger = LoggerFactory.getLogger(AppointmentDao.class);
 
 	RowMapper<Appointment> simpleMapper = new RowMapper<Appointment>() {
 
@@ -64,6 +67,7 @@ public class AppointmentDao {
 	}
 	
 	public Appointment save(Appointment appointment) {
+		logger.info(appointment.toString());
 		Integer id = appointment.getId();
 		if(id == null) {
 			
@@ -73,11 +77,11 @@ public class AppointmentDao {
 				
 				@Override
 				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-					PreparedStatement statement = con.prepareStatement("INSERT INTO appointments (time, date, client, pet) VALUES (?, ?, ?)");
+					PreparedStatement statement = con.prepareStatement("INSERT INTO appointments (time, date, client, pet) VALUES (?, ?, ?, ?)");
 					statement.setString(1, appointment.getTime().toString());
 					statement.setString(2, appointment.getDate().toString());
 					statement.setInt(3, appointment.getClient());
-					statement.setInt(3, appointment.getPet());
+					statement.setInt(4, appointment.getPet());
 					
 					
 					return statement;

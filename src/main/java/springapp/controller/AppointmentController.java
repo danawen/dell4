@@ -168,7 +168,7 @@ public class AppointmentController {
      * @param fromClientPage a flag so we know if this originated from the client page, or the pet list page
      * @return the view template to use once the save is successful
      */
-	@PreAuthorize("hasAuthority('SAVE_Appointment')")
+	@PreAuthorize("hasAuthority('SAVE_APPOINTMENT')")
 	@PostMapping
 	 public String saveAppointmnet(AppointmentCommand command, RedirectAttributes redirectAttributes, boolean fromPetPage) {
 		logger.info("Entering saveAppointment");
@@ -192,7 +192,7 @@ public class AppointmentController {
      * @param redirectAttributes additional attributes to pass along to the page we redirect to
      * @return the path of the page we redirect to once the delete is done
      */
-	@PreAuthorize("hasAuthority('DELETE_PET')")
+	@PreAuthorize("hasAuthority('DELETE_APPOINTMENT')")
 	@GetMapping("/{id}/delete")
 	public String deleteAppointment(@PathVariable("id") String id,
 							@RequestParam(name="petId", required=false) Integer petId,
