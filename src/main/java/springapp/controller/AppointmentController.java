@@ -125,7 +125,7 @@ public class AppointmentController {
 
 		if(id.equals("new")) {
             // if the id is 'new' then we create a appt command that only has the client id filled in
-            model.addAttribute("command",new AppointmentCommand(null));
+            model.addAttribute("command",new AppointmentCommand(petService.getPet(petId).getClientId(), petId));
 			//AppointmentCommand = new AppointmentCommand();
             model.addAttribute("pet", petService.getPet(petId));
             model.addAttribute("client", clientService.getClient(petService.getPet(petId).getClientId()));

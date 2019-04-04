@@ -29,15 +29,15 @@
 						<tbody>	
 							<tr data-th-each="appointment : ${appointments}">
 								<td> <a data-th-href="@{/appointments/{id}(id=${appointment.id})}" data-th-text="${appointment.id}">...</a></td>
-								<td data-th-each="client : ${clients}">
-									<div data-th-if ="${appointment.client} == ${client.id}"><span data-th-text ="${client.name}">...</span></div>
-								</td>
+								<span data-th-each="client : ${clients}">
+									<td data-th-if ="${appointment.client} == ${client.id}"><span data-th-text ="${client.name}">...</span></td>
+								</span>
 								<!-- <td data-th-text="${appointment.client}">...</td> -->
 								<td data-th-text="${appointment.time}">...</td>
 								<td data-th-text="${appointment.date}">...</td>
-								<td data-th-each="pet : ${pets}">
-									<div data-th-if ="${appointment.pet} == ${pet.id}"><span data-th-text ="${pet.name}">...</span></div>
-								</td>
+								<span data-th-each="pet : ${pets}">
+									<td data-th-if ="${appointment.pet} == ${pet.id}"><span data-th-text ="${pet.name}">...</span></td>
+								</span>
 								<!-- <td data-th-text="${appointment.pet}">...</td> -->
 							</tr>
 						</tbody>
