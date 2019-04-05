@@ -129,6 +129,7 @@ public class AppointmentController {
 			//AppointmentCommand = new AppointmentCommand();
             model.addAttribute("pet", petService.getPet(petId));
             model.addAttribute("client", clientService.getClient(petService.getPet(petId).getClientId()));
+            model.addAttribute("appointmentId", "new");
 			
 		} else {
             // else we should get the pet command that is a copy of the pet
@@ -141,6 +142,7 @@ public class AppointmentController {
 			
 			model.addAttribute("client", clientService.getClient(appointment.getClient()));
 			model.addAttribute("pet", petService.getPet(appointment.getPet()));
+			model.addAttribute("appointmentId", id);
 			
 		}
 
