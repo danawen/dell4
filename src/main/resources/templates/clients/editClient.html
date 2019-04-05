@@ -30,18 +30,19 @@
 		
 				        <div class="pure-control-group">
 				            <label for="name">Name</label>
-				            <input id="name" name="name" type="text" data-th-field="*{name}">
+				            <input id="name" name="name" type="text" data-th-field="*{name}" required>
 				        </div>
 
 				        <div class="pure-control-group">
 				            <label for="phone">Phone</label>
-				            <input id="phone" name="phone" type="text" data-th-field="*{phoneNumber}">
+				            <input id="phone" name="phone" type="text" data-th-field="*{phoneNumber}" pattern="[0-9{3}-[0-9]{3}-[0-9]{4}" required>
+				            <span class="note">Format: 123-456-7890</span>
 				        </div>
 						
 						
 				        <div class="pure-control-group">
 				            <label for="address">Address</label>
-				            <textarea id="address" name="address" type="text" data-th-field="*{address}">
+				            <textarea id="address" name="address" type="text" data-th-field="*{address}" required>
 				            </textarea>
 				        </div>
 				        <div class="pure-control-group" data-th-if="${command.id != null}">
