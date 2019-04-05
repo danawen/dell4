@@ -212,7 +212,7 @@ public class AppointmentController {
 		//DIDN'T CHANGE THIS ABOVE NOT SURE WHAT THIS DOES********************************
 
 		// otherwise we redirect to the petslisting page
-		return "redirect:/appointment";
+		return "redirect:/appointments";
 
 	}
 
