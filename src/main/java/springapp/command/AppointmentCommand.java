@@ -38,6 +38,10 @@ public class AppointmentCommand {
 		return id;
 	}
 	
+	public void setId(Integer id) {
+		this.id= id;
+	}
+	
 	public Integer getClient() {
 		return client;
 	}

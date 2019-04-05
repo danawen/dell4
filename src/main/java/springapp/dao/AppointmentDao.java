@@ -91,8 +91,8 @@ public class AppointmentDao {
 			id = holder.getKey().intValue();
 			
 		} else {
-			jdbcTemplate.update("UPDATE clients SET time = ?, date = ? , client = ? pet = ? WHERE id = ?",
-					new Object[] {appointment.getTime(), appointment.getDate(), appointment.getClient(), appointment.getPet(), id});
+			jdbcTemplate.update("UPDATE appointments SET time = ?, date = ? , client = ?, pet = ? WHERE id = ?",
+					new Object[] {appointment.getTime().toString(), appointment.getDate().toString(), appointment.getClient(), appointment.getPet(), id});
 		}
 		
 		return get(id);

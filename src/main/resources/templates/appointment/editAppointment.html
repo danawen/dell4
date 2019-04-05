@@ -16,7 +16,7 @@
 				</div>
 				<div class="pad">
 					<form class="pure-form pure-form-aligned" id="theForm" action="#" data-th-action="@{/appointments}" data-th-object="${command}" method="post">
-<!-- 						<input type="hidden" data-th-field="*{id}"/> -->
+<!--  						<input type="hidden" data-th-field="*{id}"/> -->
 						<input type="hidden" data-th-field="*{client}"/>
 						<input type="hidden" data-th-field="*{pet}"/>
 					    <div data-th-if="${saved}" class="message-box-info">
@@ -25,8 +25,8 @@
 
 						<div class="pure-control-group">
 				            <label>Id</label>
-				            <span data-th-if="${command.id == null}"> New </span>
-  				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}" data-th-field="*{id}"> New </span>
+<!-- 				            <input readonly data-th-if="${command.id == null}" value="New"/> -->
+  				            <input readonly name="id" data-th-if="${command.id != null}" data-th-value="*{id}"/>
 				        </div>
 		
 				        <div class="pure-control-group">
