@@ -25,6 +25,7 @@ import springapp.service.PetService;
 import springapp.domain.Appointment;
 import springapp.command.AppointmentCommand;
 import springapp.service.AppointmentService;
+import springapp.domain.TimeSlots;
 
 /**
  * Controller that handles the pets pages
@@ -157,6 +158,8 @@ public class AppointmentController {
         // we do this because we want to display the client info (name) not just the id.
 		//AppointmentCommand.setClient(client);			
 
+		model.addAttribute("allSlots", TimeSlots.slots);
+		
 		// we add the command pet command instance to the mode (which has the client instance as well as the pet info)
 		//model.addAttribute("command", AppointmentCommand);
 		return "appointment/editAppointment";

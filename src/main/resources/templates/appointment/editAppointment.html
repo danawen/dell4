@@ -33,8 +33,17 @@
 				            <label for="client">Client</label>
 				            <span id="client" name="client" type="text" data-th-text="${client.name}" ></span>
 				        </div>
-
+				        
 				        <div class="pure-control-group">
+				            <label for="time">Time</label>
+				            <select required id="time" name="time" data-th-field="*{time}">
+				            	<span data-th-each="slot: ${allSlots}">
+				            		<option data-th-value="${slot}" data-th-text="${#dates.format(slot,'hh:mm a')}">...</option>
+				            	</span>
+				            </select>
+				        </div>
+
+<!-- 				        <div class="pure-control-group">
 				            <label for="time">Time</label>
 				            <select required id="time" name="time" data-th-field="*{time}">
 				            	<option value="08:00:00"> 08:00 AM </option>
@@ -48,7 +57,7 @@
 				            	<option value="16:00:00"> 04:00 PM </option>
 				            	<option value="17:00:00"> 05:00 PM </option>
 				            </select>
-				        </div>
+				        </div> -->
 						
 						
 				        <div class="pure-control-group">
