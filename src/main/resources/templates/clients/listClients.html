@@ -1,7 +1,12 @@
 <!DOCTYPE HTML>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
 <header th:replace="fragments/head.html :: head" >
 </header>
+
 <body>
 	<div id="container" class="content pure-g" >
 		<header th:replace="fragments/header.html :: header" >
@@ -9,7 +14,8 @@
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
-					<a class="pure-button"  data-th-href="@{'/clients/new'}">Add client</a>
+				    <h2 class="alignleft">Clients Info</h2>
+					<a class="pure-button alignright"  data-th-href="@{'/clients/new'}">Add New Client</a>
 				</div>
 				<div class="pad">
 				    <div data-th-if="${deleted}" class="message-box-info">
@@ -18,8 +24,8 @@
 					<table class="fullWidth pure-table pure-table-horizontal">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Name</th>
+								<th >Id</th>
+								<th>Full Name</th>
 							</tr>
 						</thead>
 						<tbody>	

@@ -3,25 +3,31 @@
 <header th:replace="fragments/head.html :: head" >
 </header>
 <body>
-	<div id="container" class="content pure-g" >
+	<div id="container" class="content pure-g hp-column" >
 		<header th:replace="fragments/header.html :: header" >
 		</header>
-		<div id="mainBody" class="pure-u pure-g column">
-			<div id="content" class="pure-u-1">
+		<div id="mainBody" class="pure-u pure-g hp-column">
+			<div id="content" class="pure-u-3">
 				<div class="pad">
-					Welcome to the spring app tutorial.
+				
+			
+				  <h2>Welcome to the Spring-app Animal Hospital</h2>				
 					<br>
 					From this app, you should be able to:
 					<ul>
 						<li> Add client and edit their info </li>
 						<li> Add pets for a client </li>
 						<li> Update a client's or a pet's info</li>
-					</ul>
+					</ul>	
+		
+		           
 									
-				</div>
+				 </div>
+				 <img class="pad" src="../static/images/adorable-animal.jpg" max-width = 100% th:src="@{images/adorable-animal.jpg}"/>
 			</div>
+			
 		</div>
-    </div>
+	</div>
 </body>
 </html>
 

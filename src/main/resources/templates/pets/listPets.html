@@ -1,5 +1,9 @@
 <!DOCTYPE HTML>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pets</title>
+</head>
 <header th:replace="fragments/head.html :: head" >
 </header>
 <body>
@@ -8,6 +12,7 @@
 		</header>
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
+				<h2 class="alignleft">Pets Info</h2>
 				<div class="pad">
 				    <div data-th-if="${deleted}" class="message-box-info">
 						Deleted successfully
@@ -16,7 +21,7 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Name</th>
+								<th>Pet Name</th>
 								<th>Gender</th>
 							</tr>
 						</thead>
