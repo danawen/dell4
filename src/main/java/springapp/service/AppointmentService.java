@@ -1,11 +1,13 @@
 package springapp.service;
 
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.sqlite.SQLiteException;
 
 import springapp.command.AppointmentCommand;
 import springapp.command.ClientCommand;
@@ -46,7 +48,7 @@ public class AppointmentService {
 	}
 
 	
-	public Appointment saveAppointment(AppointmentCommand toSave) {
+	public Appointment saveAppointment(AppointmentCommand toSave) throws SQLException, SQLiteException {
 		Appointment appointment = new Appointment(toSave.getId(), toSave.getDate(), toSave.getTime(), toSave.getClient(), toSave.getPet());
 
 		return appointmentDao.save(appointment);

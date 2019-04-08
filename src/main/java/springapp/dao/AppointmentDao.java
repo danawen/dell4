@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.sqlite.SQLiteException;
 
 import springapp.controller.AppointmentController;
 import springapp.domain.Appointment;
@@ -66,7 +67,7 @@ public class AppointmentDao {
 		
 	}
 	
-	public Appointment save(Appointment appointment) {
+	public Appointment save(Appointment appointment) throws SQLException, SQLiteException {
 		logger.info(appointment.toString());
 		Integer id = appointment.getId();
 		if(id == null) {
