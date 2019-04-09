@@ -86,3 +86,7 @@ html, body {
 .alignright {
 	float: right;
 }
+
+#petalign {
+	padding-left: 44px;	
+}

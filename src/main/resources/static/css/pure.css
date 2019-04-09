@@ -1476,7 +1476,8 @@ there's a rowspan on the first cell. Case added to the tests. issue#432 */
 }
 
 .pure-table thead {
-    background-color: #2d67a7;
+  /*   background-color: #2d67a7; */
+     background-color:#569a9a;
     color: #fff;
     text-align: left;
     vertical-align: bottom;
