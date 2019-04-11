@@ -15,7 +15,7 @@ import java.util.List;
 public enum Role {
 
 	SUPER_ADMIN(Permission.values()),
-	CUSTOMER(GET_PET, GET_CLIENT, SAVE_CLIENT, SAVE_PET);
+	CUSTOMER(GET_PET, GET_CLIENT, SAVE_CLIENT, SAVE_PET, LIST_PETS, LIST_CLIENTS);
 	
 	
 	private final Permission[] permissions;
