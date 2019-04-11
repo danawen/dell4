@@ -9,6 +9,13 @@
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
+					<form class="pure-form pure-form-aligned" id="theForm" action="#"
+						data-th-action="@{/appointments}" data-th-object="${command}"
+						method="get">
+						<input type="date" name="date" required>
+						<button type="submit" class="pure-button" value="view">View</button>
+						</form>
+						
 					<a class="pure-button"  data-th-href="@{'/pets'}">Add appointment</a>
 				</div>
 				<div class="pad">

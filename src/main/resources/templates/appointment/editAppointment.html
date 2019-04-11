@@ -37,30 +37,16 @@
 						</div>
 
 						<div class="pure-control-group">
-							<label for="time">Time</label> <select required id="time"
-								name="time" data-th-field="*{time}">
-								<span data-th-each="slot: ${allSlots}">
-									<option data-th-value="${slot}"
-										data-th-text="${#dates.format(slot,'hh:mm a')}">...</option>
-							</span>
-							</select>
+							<label for="time">Time</label> <select id="time"
+								name="time" data-th-field="*{time}" required> 
+									<option data-th-if="${command.id == null}" selected disabled value="00:00:00" >
+									<option data-th-each="slot: ${allSlots}" data-th-value="${slot}"
+										data-th-text="${#dates.format(slot,'hh:mm a')}">
+									
+								</select>
+							
 						</div>
 
-						<!-- 				        <div class="pure-control-group">
-				            <label for="time">Time</label>
-				            <select required id="time" name="time" data-th-field="*{time}">
-				            	<option value="08:00:00"> 08:00 AM </option>
-				            	<option value="09:00:00"> 09:00 AM </option>
-				            	<option value="10:00:00"> 10:00 AM </option>
-				            	<option value="11:00:00"> 11:00 AM </option>
-				            	<option value="12:00:00"> 12:00 PM </option>
-				            	<option value="13:00:00"> 01:00 PM </option>
-				            	<option value="14:00:00"> 02:00 PM </option>
-				            	<option value="15:00:00"> 03:00 PM </option>
-				            	<option value="16:00:00"> 04:00 PM </option>
-				            	<option value="17:00:00"> 05:00 PM </option>
-				            </select>
-				        </div> -->
 
 
 						<div class="pure-control-group">

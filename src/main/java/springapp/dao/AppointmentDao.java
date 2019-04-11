@@ -54,6 +54,15 @@ public class AppointmentDao {
 		return queryResult;
 	}
 	
+	public List<Appointment> list(Date date) {
+		// TODO Auto-generated method stub
+		List<Appointment> queryResult = jdbcTemplate.query("SELECT id, time, date, client, pet FROM appointments where date = ? order by time",
+				new Object[] {date.toString()},
+				simpleMapper);
+		
+		return queryResult;
+	}
+	
 	public Appointment get(int id) {
 		List<Appointment> queryResult = jdbcTemplate.query("SELECT id, time, date, client,pet FROM appointments WHERE id = ? LIMIT 1", 
 				new Object[] {id},
@@ -108,4 +117,6 @@ public class AppointmentDao {
 	
 
 	}
+
+	
 }
