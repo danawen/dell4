@@ -24,6 +24,7 @@ import org.sqlite.SQLiteException;
 import springapp.controller.AppointmentController;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
+import springapp.domain.Pet;
 
 /**
  * This is the appointments dao that is responsible for managing the appointments info in the databsae.
@@ -62,6 +63,25 @@ public class AppointmentDao {
 		
 		return queryResult;
 	}
+	
+	public List<Appointment> list(List<Pet> pets) {
+		// TODO Auto-generated method stub
+		String statement= "SELECT id, time, date, client, pet FROM appointments WHERE pet in ( ";
+		Integer [] petIDs= new Integer[pets.size()];
+		for (int i=0;i<pets.size(); i++) {
+			if (i == (pets.size()-1)) statement += "? ";
+			else statement += "? , ";
+			petIDs[i]=new Integer(pets.get(i).getId());
+		}
+		statement += ") order by date";		
+		
+		List<Appointment> queryResult = jdbcTemplate.query(statement,
+				petIDs,
+				simpleMapper);
+		
+		return queryResult;
+	}
+
 	
 	public Appointment get(int id) {
 		List<Appointment> queryResult = jdbcTemplate.query("SELECT id, time, date, client,pet FROM appointments WHERE id = ? LIMIT 1", 
@@ -117,6 +137,7 @@ public class AppointmentDao {
 	
 
 	}
+
 
 	
 }

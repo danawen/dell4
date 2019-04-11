@@ -1,5 +1,6 @@
 package springapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springapp.command.PetCommand;
+import springapp.domain.Appointment;
 import springapp.domain.Client;
 import springapp.domain.Pet;
+import springapp.service.AppointmentService;
 import springapp.service.ClientService;
 import springapp.service.PetService;
 
@@ -45,6 +48,9 @@ public class PetController {
 	@Autowired
 	ClientService clientService;
 
+	@Autowired
+	AppointmentService appointmentService;
+	
     /**
      * Handle listing all the pets
      * @param model the model to populate, and merge in with the view template
@@ -103,6 +109,11 @@ public class PetController {
             Pet pet = petService.getPet(id);
             // and we generate our command from the pet instance the service returns
 			petCommand = new PetCommand(pet);
+			
+			List <Pet> singlepet= new ArrayList<Pet>();
+			singlepet.add(pet);
+			List <Appointment> appointmentlist= appointmentService.getAppointment(singlepet);
+			model.addAttribute("appointments", appointmentlist);
 		}
 
 		// the pet command should always have the clientid (unless the Pet instance from the service is missing an id)
@@ -118,6 +129,9 @@ public class PetController {
 
 		// we add the command pet command instance to the mode (which has the client instance as well as the pet info)
 		model.addAttribute("command", petCommand);
+		
+
+		
 		return "pets/editPet";
 	}
 

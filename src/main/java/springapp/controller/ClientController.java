@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import springapp.command.ClientCommand;
+import springapp.domain.Appointment;
 import springapp.domain.Client;
+import springapp.domain.Pet;
+import springapp.service.AppointmentService;
 import springapp.service.ClientService;
 
 /**
@@ -32,6 +35,9 @@ public class ClientController {
     // Inject in a ClientService claass
 	@Autowired
 	ClientService clientService;
+	
+	@Autowired
+	AppointmentService appointmentService;
 
     /**
      * Returns the name of the view template that should be used along witht the model to draw the list of clients
@@ -74,7 +80,10 @@ public class ClientController {
 
 			// we get the list of pets, and send those as is since we dont need a command to carry changes to the pets
             // from this page
-			model.addAttribute("pets", clientService.getPets(client.getId()) );
+			List <Pet> petlist= clientService.getPets(client.getId());
+			model.addAttribute("pets", petlist );
+			List <Appointment> appointmentlist= appointmentService.getAppointment(petlist);
+			model.addAttribute("appointments", appointmentlist);
 		}
 		return "clients/editClient";
 	}
