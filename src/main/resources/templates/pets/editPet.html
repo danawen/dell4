@@ -52,9 +52,27 @@
 								<option data-th-value="''"></option>
 								<option data-th-value="'Female'" data-th-text="Female"></option>
 								<option data-th-value="'Male'" data-th-text="Male"></option>
-							</select>
+							</select>							
+			           </div>		
+			           				
+						<div class="pure-control-group">
+				            <label for="age">Age</label>
+				            <input id="age" name="age" type="text" data-th-field="*{age}" required>
+				        </div>
+						
+		
+						<div class="pure-control-group">
+				            <label for="animal">Animal</label>
+				            <input id="animal" name="animal" type="text" data-th-field="*{animal}" required>
+				        </div>
+				        				
+				        <div class="pure-control-group">
+				            <label for="altered">Altered</label>
+				            <input id="altered" name="altered" type="checkbox" data-th-field="*{altered}">
+				        </div>        
+							
 					</form>
-
+                    <h2>Your Appointments</h2>
 					<table class="fullWidth pure-table pure-table-horizontal">
 						<thead>
 							<tr>
