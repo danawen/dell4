@@ -40,6 +40,11 @@ public class AppointmentService {
 		return appointmentDao.list(date);
 		
 	}
+	
+	public List<Appointment> getAppointment(List<Pet> pets) {
+		// TODO Auto-generated method stub
+		return appointmentDao.list(pets);
+	}
 
 	public Appointment getAppointment(String id) {
 		return appointmentDao.get(Integer.parseInt(id));
@@ -59,6 +64,8 @@ public class AppointmentService {
 
 		return appointmentDao.save(appointment);
 	}
+
+
 	
 
 	
