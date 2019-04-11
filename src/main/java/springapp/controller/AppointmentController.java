@@ -7,7 +7,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -191,12 +190,14 @@ public class AppointmentController {
 			boolean fromPetPage) {
 		logger.info("Entering saveAppointment");
 		// we pass in the appt command to the service to update or create a new appt
-		Appointment appointment= appointmentService.getAppointment(command.getId());
+		Appointment appointment;
+		if (command.getId()!=null)appointment= appointmentService.getAppointment(command.getId());
+		else appointment= new Appointment(null, command.getDate(), command.getTime(), command.getClient(), command.getPet());
 		try {
 			appointment = appointmentService.saveAppointment(command);
 			redirectAttributes.addAttribute("saved", true);
 			redirectAttributes.addAttribute("scheduled", true);
-		} catch (DataAccessException e) {
+		} catch (SQLiteException e) {
 			redirectAttributes.addAttribute("scheduled", false);
 			redirectAttributes.addAttribute("saved", true);
 		}catch (SQLException e) {

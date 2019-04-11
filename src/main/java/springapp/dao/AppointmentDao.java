@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -67,7 +68,7 @@ public class AppointmentDao {
 		
 	}
 	
-	public Appointment save(Appointment appointment) throws SQLException, SQLiteException {
+	public Appointment save(Appointment appointment) throws SQLException, DataAccessException {
 		logger.info(appointment.toString());
 		Integer id = appointment.getId();
 		if(id == null) {
