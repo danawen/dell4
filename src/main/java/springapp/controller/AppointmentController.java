@@ -213,6 +213,10 @@ public class AppointmentController {
 			redirectAttributes.addAttribute("petId", appointment.getPet());
 		}
 		logger.info("leaving saveAppointmnet");
+		if (appointment.getId()==null) {
+			redirectAttributes.addAttribute("petId", command.getPet());
+			return "redirect:/appointments/new"; 
+		}
 		return "redirect:/appointments/" + appointment.getId();
 
 	}
