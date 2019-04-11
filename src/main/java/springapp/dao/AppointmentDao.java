@@ -68,7 +68,7 @@ public class AppointmentDao {
 		
 	}
 	
-	public Appointment save(Appointment appointment) throws SQLException, DataAccessException {
+	public Appointment save(Appointment appointment) throws SQLException, DataAccessException, SQLiteException {
 		logger.info(appointment.toString());
 		Integer id = appointment.getId();
 		if(id == null) {

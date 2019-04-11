@@ -200,7 +200,7 @@ public class AppointmentController {
 		} catch (SQLiteException e) {
 			redirectAttributes.addAttribute("scheduled", false);
 			redirectAttributes.addAttribute("saved", true);
-		}catch (SQLException e) {
+		}catch (Exception e) {
 			redirectAttributes.addAttribute("scheduled", false);
 			redirectAttributes.addAttribute("saved", true);
 		}
