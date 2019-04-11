@@ -1,5 +1,6 @@
 package springapp.controller;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,9 +67,12 @@ public class AppointmentController {
 	 */
 	@PreAuthorize("hasAuthority('LIST_APPOINTMENTS')")
 	@GetMapping
-	public String listAppointment(Model model) {
+	public String listAppointment(Model model,
+			@RequestParam(name = "date", required = false) Date date) {
 		// get the list of pets from the service
-		List<Appointment> appointments = appointmentService.getAppointment();
+		List<Appointment> appointments;
+		if (date == null) appointments= appointmentService.getAppointment();
+		else appointments= appointmentService.getAppointment(date);
 
 		List<Pet> pets = new ArrayList<Pet>();
 		List<Client> clients = new ArrayList<Client>();

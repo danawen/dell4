@@ -1,6 +1,7 @@
 package springapp.service;
 
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
@@ -32,6 +33,11 @@ public class AppointmentService {
 	
 	public List<Appointment> getAppointment(){
 		return appointmentDao.list();
+		
+	}
+	
+	public List<Appointment> getAppointment(Date date){
+		return appointmentDao.list(date);
 		
 	}
 
