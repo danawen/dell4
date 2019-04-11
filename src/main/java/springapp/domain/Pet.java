@@ -6,13 +6,18 @@ public class Pet {
 	private final Gender gender;
 	private final boolean altered;
 	private final Integer clientId;
+	private final Integer age;
+	private final String animal; 
 	
-	public Pet(Integer id, String name, Gender gender, boolean altered, Integer clientId ){
+	public Pet(Integer id, String name, Gender gender, boolean altered, Integer clientId, Integer age ,String animal ){
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.altered = altered;
 		this.clientId = clientId;
+		this.age = age;
+		this.animal = animal;
+		
 	}
 	
 	public Integer getId() {
@@ -34,12 +39,21 @@ public class Pet {
 	public Integer getClientId() {
 		return clientId;
 	}
+	
+	public Integer getAge() {
+		return age;
+	}
 
+	public String getAnimal() {
+		return animal;
+	}
+	
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", gender=" + gender + ", altered=" + altered + ", clientId="
-				+ clientId + "]";
+				+ clientId + ",age=" + age+", animal=" + animal + "]";
 	}
+
 
 	@Override
 	public int hashCode() {
