@@ -15,8 +15,10 @@
 						method="get">
 						<input type="date" name="date" required>
 						<button type="submit" class="pure-button" value="view">View</button>
-						<a class="pure-button"  data-th-href="@{'/pets'}">Add appointment</a>
-					</form>						
+          </form>
+					<a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true" data-th-href="@{'/appointments/new'}">Add appointment</a>
+						
+
 				</div>
 				
 				<h2 style="text-align:center">Appointments</h2>
@@ -24,15 +26,14 @@
 				    <div data-th-if="${deleted}" class="message-box-info">
 						Deleted successfully
 				    </div>
-					<table class="fullWidth pure-table pure-table-horizontal">
+					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Client</th>
-								<th>Time</th>
-								<th>Date</th>
-								<th>Pet</th>
-
+								<th scope="col">Id</th>
+					      		<th scope="col">Client</th>
+					     	 	<th scope="col">Time</th>
+					     	 	<th scope="col">Date</th>
+					     	 	<th scope="col">Pet</th>
 							</tr>
 						</thead>
 						<tbody>	
