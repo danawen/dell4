@@ -126,7 +126,7 @@
 						Appointment</a>
 
 
-<button type="submit" form="theForm" class="pure-button" value="Save">Save</button>
+<button type="submit" form="theForm" class="btn btn-secondary btn-sm active" value="Save">Save</button>
 <a class="btn btn-secondary btn-sm active" data-th-if="${fromClientPage}" data-th-href="@{/clients/{c}(c=${command.client.id})}">Cancel</a>
 <a class="btn btn-secondary btn-sm active" data-th-if="${!fromClientPage}" data-th-href="@{/pets}">Cancel</a>
 
@@ -208,7 +208,7 @@ data-th-text="${appointment.id}">...</a></td>
 <td data-th-text="${appointment.time}">...</td>
 <td data-th-text="${appointment.date}">...</td>
 
-</tr>>
+</tr>
 </tbody>
 </table>
 

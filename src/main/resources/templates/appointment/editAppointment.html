@@ -7,10 +7,10 @@
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
-					<button type="submit" form="theForm" class="pure-button"
+					<button type="submit" form="theForm" class="btn btn-secondary btn-sm active" 
 						value="Save">Save</button>
-					<a class="pure-button" data-th-href="@{/appointments}">Cancel</a> <a
-						class="pure-button" data-th-if="${command.id != null}"
+					<a class="btn btn-secondary btn-sm active"  data-th-href="@{/appointments}">Cancel</a> <a
+						class="btn btn-secondary btn-sm active"  data-th-if="${command.id != null}"
 						data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
 
 				</div>
