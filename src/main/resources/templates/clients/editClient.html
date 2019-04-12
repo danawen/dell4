@@ -22,7 +22,7 @@
 							Saved
 					    </div>
 
-						<div class="pure-control-group">
+						<!-- <div class="pure-control-group">
 				            <label>Id</label>
 				            <span data-th-if="${command.id == null}"> New </span>
   				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
@@ -43,17 +43,50 @@
 				            <label for="address">Address</label>
 				            <textarea id="address" name="address" type="text" data-th-field="*{address}">
 				            </textarea>
-				        </div>
+				        </div> 
+				        
 				        <div class="pure-control-group" data-th-if="${command.id != null}">
 							<div data-th-if="${deleted}" class="message-box-info">
 								Deleted successfully
 							</div>
-							<table class="fullWidth pure-table pure-table-horizontal" >
+							</div> -->
+							
+							   <form>
+							   <div class="row d-flex justify-content-center align-items-center h-100 editstyle" >
+							   
+							  <div class="form-row" >
+							    <div class="col-sm-3 my-1">
+							      <label>ID</label>
+							      <span data-th-if="${command.id == null}"> New </span>
+  				          	      <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
+				                </div>
+							    </div>
+							    
+							    <div class="col-sm-3 my-1">
+							      <label for="name">Name</label>
+							      <input id="name" class="form-control" name="name" type="text" data-th-field="*{name}">
+							    </div>
+							  
+							  <div class="col-sm-3 my-1">
+							    <label for="address">Address</label>
+							    <input id="address" class="form-control" name="address" type="text" data-th-field="*{address}">
+							  </div>
+							  
+							  <div class="col-sm-3 my-1">
+							    <label for="phone">Phone</label>
+							    <input id="phone" class="form-control" name="phone" type="text" data-th-field="*{phoneNumber}">
+							  </div>
+							  </div>
+							   
+							</form>
+						
+							
+							<table class="table table-striped" >
 									<thead>
 										<tr>
-											<th>Pet Id</th>
-											<th>Name</th>
-											<th>Gender</th>
+											<th scope="col">Pet Id</th>
+											<th scope="col">Name</th>
+											<th scope="col">Gender</th>
 										</tr>
 									</thead>
 									<tbody data-th-if="${pets.size() > 0}">	
@@ -71,7 +104,7 @@
 								</table>
 				        	</div>
 				        </div>
-						
+				        
 						
 					</form>
 					

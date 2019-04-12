@@ -5,9 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+
 	<div class="content">
 		<div id="nav" class="pure-u column" data-th-fragment="header">
-	        <div class="nav-inner">
+	        <!-- <div class="nav-inner">
 	            <div class="pure-menu">
 	                <ul class="pure-menu-list" sec:authorize="isAuthenticated()">
 	                    <li class="pure-menu-item">
@@ -30,7 +31,39 @@
 	                    <li class="pure-menu-item"><a href="#" data-th-href="@{'/login'}" class="pure-menu-link">Sign In</a></li>
 	                </ul>
 	            </div>
-	        </div>
+	        </div> -->
+	        
+	        
+	        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark vetnavbar">
+			  <a class="navbar-brand" href="#">Endless Pawsabilities</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNav">
+			    <ul class="navbar-nav" sec:authorize="!isAnonymous()">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="#"  data-th-href="@{'/'}">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#" data-th-href="@{'/clients'}">Clients</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#"  data-th-href="@{'/pets'}">Pets</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#"  data-th-href="@{'/appointments'}">Appointments</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#" data-th-href="@{'/logout'}" >Sign Out</a>
+			      </li>
+			    </ul>
+			     <ul class="navbar-nav" sec:authorize="isAnonymous()">
+	                    <li class="nav-item"><a href="#" data-th-href="@{'/'}">Home</a></li>
+	                    <li class="nav-item" style="margin-left:10px"><a href="#" data-th-href="@{'/login'}">Sign In</a></li>
+	                </ul>
+			  </div>
+			</nav> 
+				        
 	    </div>
 	    <div id="mainBody">
 	    

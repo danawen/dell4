@@ -25,24 +25,28 @@
 					    <div data-th-if="${saved}" class="message-box-info">
 							Saved
 					    </div>
+					    
+					    <form>
+						<div class="row d-flex flex-column justify-content-center align-items-center h-100">
 
-						<div class="pure-control-group">
+						<div class="col-sm-3 my-1">
 				            <label>Client</label>
 				            <span data-th-text="${command.client.name}"> client </span>
 				        </div>
 				        
-						<div class="pure-control-group">
+						
+						<div class="col-sm-3 my-1">
 				            <label>Id</label>
 				            <span data-th-if="${command.id == null}"> New </span>
   				            <span data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>				            
 				        </div>
 		
-				        <div class="pure-control-group">
+				        <div class="col-sm-3 my-1">
 				            <label for="name">Name</label>
-				            <input id="name" name="name" type="text" data-th-field="*{name}">
+				            <input id="name" class="form-control" name="name" type="text" data-th-field="*{name}">
 				        </div>
 
-				        <div class="pure-control-group">
+				        <div class="col-sm-3 my-1">
 				            <label>Gender</label>
 							<select data-th-field="*{gender}">
 							    <option data-th-value="''"></option>
@@ -52,11 +56,12 @@
 				        </div>
 						
 						
-				        <div class="pure-control-group">
+				        <div class="col-sm-3 my-1">
 				            <label for="altered">Altered</label>
 				            <input id="altered" name="altered" type="checkbox" data-th-field="*{altered}">
 				        </div>
-				        
+				        </div>
+				        </form>
 					</form>
 					
 							
