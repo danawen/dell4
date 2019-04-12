@@ -24,19 +24,37 @@
 						<div data-th-if="${saved && scheduled}" class="message-box-info">Saved</div>
 						<div data-th-if="${saved && !scheduled}" class="message-box-info">Scheduling Conflict</div>
 
-						<div class="pure-control-group">
+						
+						
+						
+						
+						<form>
+						<div class ="row d-flex flex-column justify-content-center align-items-center h-100">						
+						
+						<div class="col-sm-3 my-1">
 							<label>Id</label>
-							<!-- 				            <input readonly data-th-if="${command.id == null}" value="New"/> -->
+							<!-- <input readonly data-th-if="${command.id == null}" value="New"/> -->
 							<input readonly name="id" data-th-if="${command.id != null}"
 								data-th-value="*{id}" />
 						</div>
 
-						<div class="pure-control-group">
+						<div class="col-sm-3 my-1">
 							<label for="client">Client</label> <span id="client"
 								name="client" type="text" data-th-text="${client.name}"></span>
 						</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 
-						<div class="pure-control-group">
+						<div class="col-sm-3 my-1">
 							<label for="time">Time</label> <select id="time"
 								name="time" data-th-field="*{time}" required> 
 									<option data-th-if="${command.id == null}" selected disabled value="00:00:00" >
@@ -49,25 +67,28 @@
 
 
 
-						<div class="pure-control-group">
+						<div class="col-sm-3 my-1">
 							<label for="date">Date</label> <input id="date" name="date"
 								type="date" data-th-field="*{date}" required>
 						</div>
 
-						<div class="pure-control-group">
+						<div class="col-sm-3 my-1">
 							<label for="pet">Pet</label> <span id="pet" name="pet"
 								type="text" data-th-text="${pet.name}"></span>
 						</div>
 
-						<div class="pure-control-group" data-th-if="${command.id != null}">
+						<div class="col-sm-3 my-1" data-th-if="${command.id != null}">
 							<div data-th-if="${deleted}" class="message-box-info">
 								Deleted successfully</div>
 
 
 						</div>
+						
+						</div>
 
 
 					</form>
+				</form>
 
 
 				</div>

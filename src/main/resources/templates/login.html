@@ -7,7 +7,7 @@
 		<header th:replace="fragments/header.html :: header" >
 		</header>
 		<div id="mainBody" class="pure-u column">
-			<div id="loginBox" >
+			<!-- <div id="loginBox" >
 				<div class="bordered pure-u column">
 					
 					<div data-th-if="${param.error}" class="message-box-error">
@@ -32,7 +32,37 @@
 			        	</div>
 					</form>
 					</div>
-		        </div>
+		        </div> -->
+		        
+		        
+		        <div class="container">
+				<div class="row d-flex flex-column justify-content-center align-items-center h-100">
+					
+					<div class="col-3">
+					<div data-th-if="${param.error}" class="message-box-error">
+				        Invalid username and password
+				    </div>
+				    <div data-th-if="${param.logout}" class="message-box-info">
+				        You have been logged out
+				    </div>
+					
+					
+					
+					<form data-th-action="@{/login}" method="post" >
+					  <div class="form-group">
+					    <label for="username">Username</label>
+					    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+					  </div>
+					  <div class="form-group">
+					    <label for="password">Password</label>
+					    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+					  </div>
+					  <button type="submit" class="btn btn-primary">Sign In</button>
+					</form>
+					</div>
+					</div>
+		        </div> 
+		        
 	        </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!-- <!DOCTYPE HTML>
 <html>
 <header th:replace="fragments/head.html :: head"> </header>
 <body>
@@ -118,7 +118,271 @@
 	</div>
 	</div>
 </body>
-</html>
+</html> -->
+
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+
+<header th:replace="fragments/head.html :: head" >
+
+</header>
+
+<body>
+
+        <div id="container" class="content pure-g" >
+
+                <header th:replace="fragments/header.html :: header" >
+
+                </header>
+
+                <div id="mainBody" class="pure-u pure-g column">
+
+                        <div id="content" class="pure-u-1">
+
+                                <div class="pad right">
+
+                                        <button type="submit" form="theForm" class="pure-button"  value="Save">Save</button>
+
+                                        <a class="pure-button" data-th-href="@{/clients}">Cancel</a>
+
+                                        <a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/clients/{c}/delete(c=${command?.id})}">Delete</a>
+
+                                        <a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/pets/new?clientId={c}(c=${command?.id})}">Add Pet</a>
+
+ 
+
+                                </div>
+
+                                <div class="pad">
+
+                                        <form class="pure-form pure-form-aligned" id="theForm" action="#" data-th-action="@{/clients}" data-th-object="${command}" method="post">
+
+                                                <input type="hidden" data-th-field="*{id}"/>
+
+                                            <div data-th-if="${saved}" class="message-box-info">
+
+                                                        Saved
+
+                                            </div>
+
+ 
+
+                                                <!-- <div class="pure-control-group">
+
+                                            <label>Id</label>
+
+                                            <span data-th-if="${command.id == null}"> New </span>
+
+                                            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
+
+                                        </div>
+
+               
+
+                                        <div class="pure-control-group">
+
+                                            <label for="name">Name</label>
+
+                                            <input id="name" name="name" type="text" data-th-field="*{name}">
+
+                                        </div>
+
+ 
+
+                                        <div class="pure-control-group">
+
+                                            <label for="phone">Phone</label>
+
+                                            <input id="phone" name="phone" type="text" data-th-field="*{phoneNumber}">
+
+                                        </div>
+
+                                               
+
+                                               
+
+                                        <div class="pure-control-group">
+
+                                            <label for="address">Address</label>
+
+                                            <textarea id="address" name="address" type="text" data-th-field="*{address}">
+
+                                            </textarea>
+
+                                        </div>
+
+                                        
+
+                                        <div class="pure-control-group" data-th-if="${command.id != null}">
+
+                                                        <div data-th-if="${deleted}" class="message-box-info">
+
+                                                                Deleted successfully
+
+                                                        </div>
+
+                                                        </div> -->
+
+                                                       
+
+                                                           <form>
+
+                                                           <div class="row d-flex justify-content-center align-items-center h-100 editstyle" >
+
+                                                          
+
+                                                          <div class="form-row" >
+
+                                                            <div class="col-sm-3 my-1">
+
+                                                              <label>ID</label>
+
+                                                              <span data-th-if="${command.id == null}"> New </span>
+
+                                                        <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
+
+                                                </div>
+
+                                                            </div>
+
+                                                           
+
+                                                            <div class="col-sm-3 my-1">
+
+                                                              <label for="name">Name</label>
+
+                                                              <input id="name" class="form-control" name="name" type="text" data-th-field="*{name}" required>
+
+                                                            </div>
+
+                                                         
+
+                                                          <div class="col-sm-3 my-1">
+
+                                                            <label for="address">Address</label>
+
+                                                            <input id="address" class="form-control" name="address" type="text" data-th-field="*{address}" required>
+
+                                                          </div>
+
+                                                         
+
+                                                          <div class="col-sm-3 my-1">
+
+                                                            <label for="phone">Phone</label>
+
+                                                            <input id="phone" class="form-control" name="phone" type="text" data-th-field="*{phoneNumber}" required>
+
+                                                          </div>
+
+                                                          <div class="col-sm-3 my-1" data-th-if="${command.id != null}">
+
+                                                        <div data-th-if="${deleted}" class="message-box-info">
+
+                                                                Deleted successfully</div>
+
+                                                          </div>
+
+                                                         
+
+                                                           
+
+                                                        </form>
+
+                                                <h2>Your Pets</h2>
+
+                                                       
+
+                                                        <table class="table table-striped" >
+
+                                                                        <thead>
+
+                                                                                <tr>
+
+                                                                                        <th scope="col">Pet Id</th>
+
+                                                                                        <th scope="col">Name</th>
+
+                                                                                        <th scope="col">Gender</th>
+
+                                                                                </tr>
+
+                                                                        </thead>
+
+                                                                        <tbody data-th-if="${pets.size() > 0}">
+
+                                                                                <tr data-th-each="pet : ${pets}">
+
+                                                                                        <td> <a data-th-href="@{/pets/{pid}?clientId={cid}(pid=${pet.id}, cid=${command.id})}" data-th-text="${pet.id}">...</a></td>
+
+                                                                                        <td data-th-text="${pet.name}">...</td>
+
+                                                                                        <td data-th-text="${pet.gender}">...</td>
+
+                                                                                </tr>
+
+                                                                        </tbody>
+
+                                                                        <tbody data-th-if="${pets.size() == 0}">
+
+                                                                                <tr>
+
+                                                                                        <td  colspan=3>No associated pets</td>
+
+                                                                                </tr>
+
+                                                                        </tbody>
+
+                                                                </table>
+
+                                                                <h2>Your Appointment</h2>
+
+                                                                <table class="table table-striped">
+
+                                          <thead>
+
+                                            <tr>
+
+                                              <th scope="col">Id</th>
+
+                                              <th scope="col">Time</th>
+
+                                              <th scope="col">Date</th>
+
+                                              <th scope="col">Pet</th>
+
+                                            </tr>
+
+                                          </thead>
+
+                                          <tbody>
+
+                                            <tr data-th-each="appointment : ${appointments}">
+
+                                                                                <td><a
+
+                                                                                        data-th-href="@{/appointments/{id}(id=${appointment.id})}"
+
+                                                                                        data-th-text="${appointment.id}">...</a></td>
+
+                                                                               
+
+                                                                                <td data-th-text="${appointment.time}">...</td>
+
+                                                                                <td data-th-text="${appointment.date}">...</td>
+
+                                                                                <span data-th-each="pet : ${pets}">
+
+
+
+
+
+
+
 
 
 
