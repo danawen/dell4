@@ -12,6 +12,7 @@ public class AppointmentCommand {
 	private Integer client;
 	private Integer pet;
 	private Date date;
+	
 	private Time time;
 	
 	
@@ -25,8 +26,20 @@ public class AppointmentCommand {
 		}
 	}
 
+	public AppointmentCommand(Integer clientId, Integer pet2) {
+		// TODO Auto-generated constructor stub
+		this.client= new Integer(clientId);
+		this.pet= new Integer(pet2);
+	}
+	
+	public AppointmentCommand() {}
+
 	public Integer getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id= id;
 	}
 	
 	public Integer getClient() {

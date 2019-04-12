@@ -11,20 +11,26 @@
 				<div class="pad">
 				    <div data-th-if="${deleted}" class="message-box-info">
 						Deleted successfully
-				    </div>					
-					<table class="table table-striped">
-					  <thead>
-					    <tr>
-					      <th scope="col">Id</th>
-					      <th scope="col">Name</th>
-					      <th scope="col">Gender</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr data-th-each="pet : ${pets}">
+
+				    </div>
+				    <h2 style="text-align:center">Pets info</h2>
+					<table class="fullWidth pure-table pure-table-horizontal">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Gender</th>
+								<th>Age</th>
+								<th>Animal</th>
+							</tr>
+						</thead>
+						<tbody>	
+							<tr data-th-each="pet : ${pets}">
 								<td> <a data-th-href="@{/pets/{id}(id=${pet.id})}" data-th-text="${pet.id}">...</a></td>
 								<td data-th-text="${pet.name}">...</td>
 								<td data-th-text="${pet.gender}">...</td>
+								<td data-th-text="${pet.age}">...</td>
+								<td data-th-text="${pet.animal}">...</td>
 							</tr>
 					  </tbody>
 					</table>

@@ -46,8 +46,13 @@ public class Appointment {
 		return pet;
 	}
 
+	@Override
+	public String toString() {
+		return "Appointment [id=" + id + ", time=" + time + ", date=" + date + ", client=" + client + ", pet=" + pet
+				+ "]";
+	}
 
-	
+
 	
 }
 

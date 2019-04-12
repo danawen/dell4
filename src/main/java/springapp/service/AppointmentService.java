@@ -1,11 +1,14 @@
 package springapp.service;
 
 
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.sqlite.SQLiteException;
 
 import springapp.command.AppointmentCommand;
 import springapp.command.ClientCommand;
@@ -32,6 +35,16 @@ public class AppointmentService {
 		return appointmentDao.list();
 		
 	}
+	
+	public List<Appointment> getAppointment(Date date){
+		return appointmentDao.list(date);
+		
+	}
+	
+	public List<Appointment> getAppointment(List<Pet> pets) {
+		// TODO Auto-generated method stub
+		return appointmentDao.list(pets);
+	}
 
 	public Appointment getAppointment(String id) {
 		return appointmentDao.get(Integer.parseInt(id));
@@ -46,11 +59,13 @@ public class AppointmentService {
 	}
 
 	
-	public Appointment saveAppointment(AppointmentCommand toSave) {
+	public Appointment saveAppointment(AppointmentCommand toSave) throws SQLException, SQLiteException {
 		Appointment appointment = new Appointment(toSave.getId(), toSave.getDate(), toSave.getTime(), toSave.getClient(), toSave.getPet());
 
 		return appointmentDao.save(appointment);
 	}
+
+
 	
 
 	

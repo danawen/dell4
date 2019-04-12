@@ -1,69 +1,81 @@
 <!DOCTYPE HTML>
 <html>
-<header th:replace="fragments/head.html :: head" >
-</header>
+
+<header data-th-replace="fragments/head.html :: head"> </header>
 <body>
-	<div id="container" class="content pure-g" >
-		<header th:replace="fragments/header.html :: header" >
-		</header>
+	<div id="container" class="content pure-g">
+		<header data-th-replace="fragments/header.html :: header"> </header>
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
-					<button type="submit" form="theForm" class="pure-button"  value="Save">Save</button>
-					<a class="pure-button" data-th-href="@{/appointments}">Cancel</a>
-					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
-					
+					<button type="submit" form="theForm" class="pure-button"
+						value="Save">Save</button>
+					<a class="pure-button" data-th-href="@{/appointments}">Cancel</a> <a
+						class="pure-button" data-th-if="${command.id != null}"
+						data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
+
 				</div>
 				<div class="pad">
-					<form class="pure-form pure-form-aligned" id="theForm" action="#" data-th-action="@{/appointments}" data-th-object="${command}" method="post">
-						<input type="hidden" data-th-field="*{id}"/>
-					    <div data-th-if="${saved}" class="message-box-info">
-							Saved
-					    </div>
+					<form class="pure-form pure-form-aligned" id="theForm" action="#"
+						data-th-action="@{/appointments}" data-th-object="${command}"
+						method="post">
+						<!--  						<input type="hidden" data-th-field="*{id}"/> -->
+						<input type="hidden" data-th-field="*{client}" /> <input
+							type="hidden" data-th-field="*{pet}" />
+						<div data-th-if="${saved && scheduled}" class="message-box-info">Saved</div>
+						<div data-th-if="${saved && !scheduled}" class="message-box-info">Scheduling Conflict</div>
 
 						<div class="pure-control-group">
-				            <label>Id</label>
-				            <span data-th-if="${command.id == null}"> New </span>
-  				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
-				        </div>
-		
-				        <div class="pure-control-group">
-				            <label for="client">Client</label>
-				            <span id="client" name="client" type="text" data-th-text="*{client}"></span>
-				        </div>
+							<label>Id</label>
+							<!-- 				            <input readonly data-th-if="${command.id == null}" value="New"/> -->
+							<input readonly name="id" data-th-if="${command.id != null}"
+								data-th-value="*{id}" />
+						</div>
 
-				        <div class="pure-control-group">
-				            <label for="time">Time</label>
-				            <input id="time" name="time" type="time" data-th-field="*{time}">
-				        </div>
-						
-						
-				        <div class="pure-control-group">
-				            <label for="date">Date</label>
-				            <input id="date" name="date" type="date" data-th-field="*{date}">
-				        </div>
-				        
-				        <div class="pure-control-group">
-				            <label for="pet">Pet</label>
-				            <span id="pet" name="pet" type="text" data-th-text="*{pet}"></span>
-				        </div>
-				        
-				        <div class="pure-control-group" data-th-if="${command.id != null}">
+						<div class="pure-control-group">
+							<label for="client">Client</label> <span id="client"
+								name="client" type="text" data-th-text="${client.name}"></span>
+						</div>
+
+						<div class="pure-control-group">
+							<label for="time">Time</label> <select id="time"
+								name="time" data-th-field="*{time}" required> 
+									<option data-th-if="${command.id == null}" selected disabled value="00:00:00" >
+									<option data-th-each="slot: ${allSlots}" data-th-value="${slot}"
+										data-th-text="${#dates.format(slot,'hh:mm a')}">
+									
+								</select>
+							
+						</div>
+
+
+
+						<div class="pure-control-group">
+							<label for="date">Date</label> <input id="date" name="date"
+								type="date" data-th-field="*{date}" required>
+						</div>
+
+						<div class="pure-control-group">
+							<label for="pet">Pet</label> <span id="pet" name="pet"
+								type="text" data-th-text="${pet.name}"></span>
+						</div>
+
+						<div class="pure-control-group" data-th-if="${command.id != null}">
 							<div data-th-if="${deleted}" class="message-box-info">
-								Deleted successfully
-							</div>
-							
-				        	</div>
-				        </div>
-						
-						
+								Deleted successfully</div>
+
+
+						</div>
+
+
 					</form>
-					
-							
+
+
 				</div>
 			</div>
 		</div>
-    </div>
+	</div>
+
 </body>
 </html>
 
