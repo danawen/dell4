@@ -9,20 +9,21 @@
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
-					<a class="pure-button"  data-th-href="@{'/clients/new'}">Add client</a>
+				
+				
+					<a class="btn btn-secondary btn-sm active"  data-th-href="@{'/clients/new'}">Add client</a>
 				</div>
 				<div class="pad">
 				    <div data-th-if="${deleted}" class="message-box-info">
 						Deleted successfully
 				    </div>
-				    <h2 style="text-align:center">Client Info</h2>
-					<table class="fullWidth pure-table pure-table-horizontal">
+					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Full Name</th>
-								<th>Phone Number</th>
-								<th>Address</th>
+								<th scope="col">Id</th>
+					     		 <th scope="col">Name</th>
+					     		  <th scope="col">Phone Number</th>
+					     		   <th scope="col">Address</th>
 							</tr>
 						</thead>
 						<tbody>	
@@ -39,5 +40,5 @@
 		</div>
     </div>
 </body>
-</html>
+</html> 
 

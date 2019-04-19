@@ -1,59 +1,59 @@
+
+
+
 <!DOCTYPE HTML>
 <html>
 <header th:replace="fragments/head.html :: head" >
 </header>
 <body>
-	<div id="container" class="content pure-g" >
-		<header th:replace="fragments/header.html :: header" >
-		</header>
-		<div id="mainBody" class="pure-u pure-g column">
-			<div id="content" class="pure-u-1">
-				<div class="pad right">
-				
-					<form class="pure-form pure-form-aligned" id="theForm" action="#"
-						data-th-action="@{/appointments}" data-th-object="${command}"
-						method="get">
-						<input type="date" name="date" required>
-						<button type="submit" class="pure-button" value="view">View</button>
-						<a class="pure-button"  data-th-href="@{'/pets'}">Add appointment</a>
-					</form>						
-				</div>
-				
-				<h2 style="text-align:center">Appointments</h2>
-				<div class="pad">
-				    <div data-th-if="${deleted}" class="message-box-info">
-						Deleted successfully
-				    </div>
-					<table class="fullWidth pure-table pure-table-horizontal">
-						<thead>
-							<tr>
-								<th>Id</th>
-								<th>Client</th>
-								<th>Time</th>
-								<th>Date</th>
-								<th>Pet</th>
+<div id="container" class="content pure-g" >
+<header th:replace="fragments/header.html :: header" >
+</header>
+<div id="mainBody" class="pure-u pure-g column">
+<div id="content" class="pure-u-1">
+<div class="pad right">
+<form data-th-action="@{/appointments}" data-th-object="${command}"
+method="get">
+<input type="date" name="date" required>
+<button type="submit" class="btn btn-secondary btn-sm active" value="view">View</button>
+<!-- <a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true" data-th-href="@{'/appointments/new'}">Add appointment</a> -->
+</form> 
 
-							</tr>
-						</thead>
-						<tbody>	
-							<tr data-th-each="appointment : ${appointments}">
-								<td> <a data-th-href="@{/appointments/{id}(id=${appointment.id})}" data-th-text="${appointment.id}">...</a></td>
-								<span data-th-each="client : ${clients}">
-									<td data-th-if ="${appointment.client} == ${client.id}"><span data-th-text ="${client.name}">...</span></td>
-								</span>
-								<!-- <td data-th-text="${appointment.client}">...</td> -->
-								<td data-th-text="${appointment.time}">...</td>
-								<td data-th-text="${appointment.date}">...</td>
-								<span data-th-each="pet : ${pets}">
-									<td data-th-if ="${appointment.pet} == ${pet.id}"><span data-th-text ="${pet.name}">...</span></td>
-								</span>
-								<!-- <td data-th-text="${appointment.pet}">...</td> -->
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-    </div>
+<!-- <a class="pure-button" data-th-href="@{'/appointments/new'}">Add appointment</a> -->
+</div>
+<div class="pad">
+<div data-th-if="${deleted}" class="message-box-info">
+Deleted successfully
+</div>
+<table class="table table-striped">
+<thead>
+<tr>
+<th scope="col">Id</th>
+<th scope="col">Client</th>
+<th scope="col">Time</th>
+<th scope="col">Date</th>
+<th scope="col">Pet</th>
+</tr>
+</thead>
+<tbody>	
+<tr data-th-each="appointment : ${appointments}">
+<td> <a data-th-href="@{/appointments/{id}(id=${appointment.id})}" data-th-text="${appointment.id}">...</a></td>
+<span data-th-each="client : ${clients}"> 
+<td data-th-if ="${appointment.client} == ${client.id}"><span data-th-text ="${client.name}">...</span></td>
+</span> 
+<!-- <td data-th-text="${appointment.client}">...</td> -->
+<td data-th-text="${appointment.time}">...</td>
+<td data-th-text="${appointment.date}">...</td>
+<span data-th-each="pet : ${pets}">
+<td data-th-if ="${appointment.pet} == ${pet.id}"><span data-th-text ="${pet.name}">...</span></td>
+</span> 
+<!-- <td data-th-text="${appointment.pet}">...</td> -->
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
